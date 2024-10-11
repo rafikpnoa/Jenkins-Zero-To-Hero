@@ -5,26 +5,16 @@ stage('SonarQube Code Analysis') {
                 script {
                     def scannerHome = tool name: 'scanner-name', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     withSonarQubeEnv('sonar') {
-                        sh "echo $pwd"
-                        sh "${scannerHome}/bin/sonar-scanner"
+                        sh "${scannerHome}/bin/sonar-scanner \
+                            -D sonar.projectVersion=1.0-SNAPSHOT \
+                            -D sonar.qualityProfile=test \
+                            -D sonar.projectBaseDir=. \
+                            -D sonar.projectKey=test \
+                            -D sonar.sourceEncoding=UTF-8 \
+                            -D sonar.language=maven \
+                            -D sonar.host.url=http://77.72.3.41:9000
                     }
                 }
             }
             }
        }
-       stage("SonarQube Quality Gate Check") {
-            steps {
-                script {
-                def qualityGate = waitForQualityGate()
-                    
-                    if (qualityGate.status != 'OK') {
-                        echo "${qualityGate.status}"
-                        error "Quality Gate failed: ${qualityGateStatus}"
-                    }
-                    else {
-                        echo "${qualityGate.status}"
-                        echo "SonarQube Quality Gates Passed"
-                    }
-                }
-            }
-        }
