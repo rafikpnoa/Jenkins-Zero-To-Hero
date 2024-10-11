@@ -1,14 +1,19 @@
-pipeline {
-  stages {
-    stage('Static Code Analysis') {
-      environment {
-        SONAR_URL = "http://34.201.116.83:9000"
-      }
-      steps {
-        withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-          sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
-        }
-      }
-    }
-  }
-}
+stage('SonarQube Code Analysis') {
+            steps {
+                dir("${WORKSPACE}"){
+                // Run SonarQube analysis for Python
+                script {
+                    def scannerHome = tool name: 'scanner-name', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                    withSonarQubeEnv('sonar') {
+                        sh "${scannerHome}/bin/sonar-scanner \
+                            -D sonar.projectVersion=1.0-SNAPSHOT \
+                            -D sonar.projectBaseDir=. \
+                            -D sonar.projectKey=test \
+                            -D sonar.sourceEncoding=UTF-8 \
+                            -D sonar.language=maven \
+                            -D sonar.host.url=http://77.72.3.41:9000"
+                    }
+                }
+            }
+            }
+       }
