@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.abhishek</groupId>
-    <artifactId>spring-boot-demo</artifactId>
+    <artifactId>spring-shoes-demo</artifactId>
     <version>1.0</version>
 
-    <name>spring-boot-demo</name>
+    <name>spring-shoes-demo</name>
     <url></url>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
+        <groupId>org.springframework.shoes</groupId>
+        <artifactId>spring-shoes-starter-parent</artifactId>
         <version>2.2.4.RELEASE</version>
     </parent>
 
@@ -27,23 +27,23 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springframework.shoes</groupId>
+            <artifactId>spring-shoes-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <groupId>org.springframework.shoes</groupId>
+            <artifactId>spring-shoes-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <groupId>org.springframework.shoes</groupId>
+            <artifactId>spring-shoes-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
         <!-- debugging -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
+            <groupId>org.springframework.shoes</groupId>
+            <artifactId>spring-shoes-devtools</artifactId>
             <optional>true</optional>
         </dependency>
 
@@ -51,12 +51,12 @@
 
     <build>
 
-        <finalName>spring-boot-web</finalName>
+        <finalName>spring-shoes-web</finalName>
 
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.springframework.shoes</groupId>
+                <artifactId>spring-shoes-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
